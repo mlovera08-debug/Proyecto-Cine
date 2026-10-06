@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gestión de Cartelera</title>
+</head>
+<body>
+  <h2>Agregar Película</h2>
+  <form id="movieForm">
+    <label>Título: <input type="text" id="title" required /></label><br />
+    <label>Género: <input type="text" id="genre" required /></label><br />
+    <label>Duración (min): <input type="number" id="duration" required /></label><br />
+    <button type="submit">Agregar</button>
+  </form>
+
+  <h3>Cartelera</h3>
+  <ul id="movieList"></ul>
+
+  <script>
+    const form = document.getElementById("movieForm");
+    const list = document.getElementById("movieList");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const title = document.getElementById("title").value;
+      const genre = document.getElementById("genre").value;
+      const duration = document.getElementById("duration").value;
+
+      const item = document.createElement("li");
+      item.textContent = `${title} - ${genre} - ${duration} min`;
+      list.appendChild(item);
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>
